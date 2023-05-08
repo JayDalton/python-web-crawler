@@ -3,10 +3,12 @@ import time
 
 async def a():
     print("a()")
+    await asyncio.sleep(2)
     print(f"a() {time.time() - t0:.1f}s")
 
 async def b():
     print("b()")
+    await asyncio.sleep(2)
     print(f"b() {time.time() - t0:.1f}s")
 
 t0 = time.time()
