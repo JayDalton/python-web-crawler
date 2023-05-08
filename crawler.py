@@ -1,19 +1,20 @@
+import asyncio
 import time
 
-def a():
+async def a():
     print("a()")
-    time.sleep(2)
     print(f"a() {time.time() - t0:.1f}s")
 
-def b():
-    print("a()")
-    time.sleep(2)
-    print(f"a() {time.time() - t0:.1f}s")
+async def b():
+    print("b()")
+    print(f"b() {time.time() - t0:.1f}s")
 
 t0 = time.time()
 
-def main():
-    a()
-    b()
+async def main():
+    task1 = asyncio.create_task(a())
+    task2 = asyncio.create_task(b())
+    await task1
+    await task2
 
-main()
+asyncio.run(main())
